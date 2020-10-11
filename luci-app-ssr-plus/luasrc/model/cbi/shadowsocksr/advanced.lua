@@ -30,6 +30,11 @@ o = s:option(Flag, "enable_switch", translate("Enable Auto Switch"))
 o.rmempty = false
 o.default = "1"
 
+-- Jack modify
+o = s:option(Flag, "force_switch_main", "主节点可用时，强制切换回去")
+o.rmempty = false
+o.default = ""
+
 o = s:option(Value, "switch_time", translate("Switch check cycly(second)"))
 o.datatype = "uinteger"
 o:depends("enable_switch", "1")
@@ -50,7 +55,6 @@ o.rmempty = false
 
 o = s:option(Value, "adblock_url", translate("adblock_url"))
 o:value("https://anti-ad.net/anti-ad-for-dnsmasq.conf", translate("anti-AD"))
-o:value("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt", translate("Easylist China"))
 o.default = "https://anti-ad.net/anti-ad-for-dnsmasq.conf"
 o:depends("adblock", "1")
 o.description = translate("Support AdGuardHome and DNSMASQ format list")
